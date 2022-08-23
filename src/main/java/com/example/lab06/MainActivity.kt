@@ -1,0 +1,41 @@
+package com.example.lab06
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.fragment.app.Fragment
+import com.example.lab06.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityMainBinding
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.button5.setOnClickListener{
+
+            replacefragment(F1())
+
+        binding.button.setOnClickListener{
+
+            replacefragment(F2())
+
+        binding.button2.setOnClickListener {
+
+            replacefragment(F3())
+
+        }
+        }
+        }
+    }
+    private fun replacefragment(fragment : Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentConainer,fragment)
+        fragmentTransaction.commit()
+    }
+}
